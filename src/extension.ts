@@ -127,7 +127,7 @@ function getWebviewContent(): string {
           color: inherit;
           font-family: inherit;
           margin-top: 2em;
-          width: 100ch;
+          max-width: 100ch;
         }
         #response:empty {
           display: none;
