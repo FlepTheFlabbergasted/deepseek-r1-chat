@@ -135,7 +135,7 @@ function getWebviewContent(): string {
       </style>
     </head>
     <body>
-      <h2>DeepSeek R1 VS Code Extension</h2>
+      <h2>Chat with DeepSeek R1</h2>
       <textarea id="prompt" rows="3" placeholder="Ask DeepSeek anything!"></textarea>
       <button id="askBtn">Ask</button>
       <button id="stopBtn">Stop</button>
@@ -163,7 +163,12 @@ function getWebviewContent(): string {
 
           if(eventKey === 'shift') {
             isShiftKeyHeld = true;
-          } else if(!isShiftKeyHeld && eventKey === 'enter' && !document.getElementById('askBtn').hasAttribute('disabled', true)) {
+          } else if(
+            !isShiftKeyHeld &&
+            eventKey === 'enter' &&
+            document.activeElement === document.getElementById('prompt') &&
+            !document.getElementById('askBtn').hasAttribute('disabled')
+          ) {
             event.preventDefault();
             sendText();
             isShiftKeyHeld = false;
